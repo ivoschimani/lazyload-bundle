@@ -29,6 +29,6 @@ use Ivo\LazyloadBundle\LazyloadHelper;
 <?php endif; ?>
 <?php
 // append Lazy js
-$GLOBALS['TL_JAVASCRIPT']['lazysizes'] = 'web/bundles/lazyload/lazysizes.min.js';
-$GLOBALS['TL_CSS']['lazysizes'] = 'web/bundles/lazyload/lazysizes.css';
+$GLOBALS['TL_JAVASCRIPT']['lazysizes'] = 'bundles/lazyload/lazysizes.min.js';
+$GLOBALS['TL_CSS']['lazysizes'] = 'bundles/lazyload/lazysizes.css';
 ?>

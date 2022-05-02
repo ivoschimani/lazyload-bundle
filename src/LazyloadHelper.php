@@ -58,9 +58,9 @@ class LazyloadHelper
             ) . ";base64," . base64_encode($strFile);
         } else {
             if ($width && $height) {
-                $strImg = urlencode('data:image/svg+xml;charset=UTF-8,<svg height="' . $height . 'px" viewBox="0 0 ' . $width . 'px ' . $height . 'px" width="' . $width . 'px" xmlns="http://www.w3.org/2000/svg"></svg>');
+                $strImg = 'data:image/svg+xml;charset=UTF-8,' . urlencode('<svg height="' . $height . 'px" viewBox="0 0 ' . $width . 'px ' . $height . 'px" width="' . $width . 'px" xmlns="http://www.w3.org/2000/svg"></svg>');
             } else {
-                $strImg = urlencode('data:image/svg+xml;charset=UTF-8,<svg height="1px" viewBox="0 0 1px 1px" width="1px" xmlns="http://www.w3.org/2000/svg"></svg>');
+                $strImg = 'data:image/svg+xml;charset=UTF-8,' . urlencode('<svg height="1px" viewBox="0 0 1px 1px" width="1px" xmlns="http://www.w3.org/2000/svg"></svg>');
             }
         }
         return $strImg;
