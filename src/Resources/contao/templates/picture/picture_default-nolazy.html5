@@ -1,0 +1,23 @@
+<?php if ($this->sources) : ?>
+<picture>
+    <!--[if IE 9]>
+    <video style="display: none;"><![endif]-->
+    <?php foreach ($this->sources as $source) : ?>
+    <source srcset="<?php echo $source['srcset'] ?>" <?php if (!empty($source['sizes'])) : ?>
+        sizes="<?php echo $source['sizes']; ?>" <?php endif; ?><?php if (!empty($source['media'])) : ?>
+        media="<?php echo $source['media']; ?>" <?php endif; ?><?php if (!empty($source['type'])) : ?>
+        type="<?php echo $source['type']; ?>" <?php endif; ?>>
+    <?php endforeach; ?>
+    <!--[if IE 9]></video><![endif]-->
+    <?php endif; ?>
+    <img<?php if ($this->img['srcset'] === $this->img['src']) : ?> src="<?php echo $this->img['src']; ?>"
+        <?php endif; ?><?php if ($this->img['srcset'] !== $this->img['src']) : ?>
+        data-srcset="<?php echo $this->img['srcset']; ?>" <?php endif; ?><?php if (!empty($this->img['sizes'])) : ?>
+        sizes="<?php echo $this->img['sizes']; ?>" <?php endif; ?><?php if (!$this->sources) : ?>
+        width="<?php echo $this->img['width']; ?>" height="<?php echo $this->img['height']; ?>" <?php endif; ?>
+        alt="<?= htmlentities($this->alt); ?>" <?php if ($this->title) : ?> title="<?= htmlentities($this->title); ?>"
+        <?php endif; ?>>
+
+        <?php if ($this->sources) : ?>
+</picture>
+<?php endif; ?>

@@ -1,0 +1,13 @@
+img {
+    transition: filter 0.2s linear;
+    transform: translateZ(0);
+    /* render on GPU */
+}
+img.lazyload,
+img.lazyloading {
+    filter: blur(8px);
+}
+
+img.lazyloaded {
+    filter: blur(0);
+}
