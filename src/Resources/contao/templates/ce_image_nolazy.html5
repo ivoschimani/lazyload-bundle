@@ -9,7 +9,7 @@
         <?php endif; ?><?= $this->attributes ?>>
         <?php endif; ?>
 
-        <?php $this->insert('picture_default-nolazy', $this->picture); ?>
+        <?php $this->insert('picture_default_nolazy', $this->picture); ?>
 
         <?php if ($this->href) : ?>
     </a>

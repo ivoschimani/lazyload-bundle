@@ -9,7 +9,7 @@
         <?php endif; ?><?= $this->attributes ?>>
         <?php endif; ?>
 
-        <?php $this->insert('picture_default-blur', $this->picture); ?>
+        <?php $this->insert('picture_default_blur', $this->picture); ?>
 
         <?php if ($this->href) : ?>
     </a>
