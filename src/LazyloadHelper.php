@@ -18,6 +18,8 @@ class LazyloadHelper
         $container = System::getContainer();
         $rootDir = $container->getParameter('kernel.project_dir');
         $lazyPath = '/assets/images/lazy';
+        $lazyTarget = null;
+        $strFile = null;
         if ($singleSRC && substr($singleSRC, -4) != '.svg' && \file_exists($rootDir . '/' . $singleSRC)) {
             $lazyTarget = $lazyPath . '/lazy-' . hash("md5", ($singleSRC . $width . $height)) . substr($singleSRC, -4);
             $image = $rootDir . '/' . $singleSRC;
@@ -27,7 +29,7 @@ class LazyloadHelper
             mkdir($rootDir . $lazyPath);
         }
 
-        if (!file_exists(TL_ROOT . '/' . $lazyTarget)) {
+        if ($lazyTarget && !file_exists(TL_ROOT . '/' . $lazyTarget)) {
             $imagine = new Imagine();
             $resizer = new Resizer($rootDir . '/system/tmp');
             $image = new ContaoImageImage($image, $imagine);
@@ -47,7 +49,7 @@ class LazyloadHelper
                 ->setTargetPath($rootDir . $lazyTarget);
             $resizer->resize($image, $config, $options);
         }
-        if (file_exists(TL_ROOT . '/' . $lazyTarget)) {
+        if ($lazyTarget && file_exists(TL_ROOT . '/' . $lazyTarget)) {
             $strFile = @file_get_contents(TL_ROOT . '/' . $lazyTarget);
         }
         if ($strFile) {
