@@ -29,7 +29,7 @@ class LazyloadHelper
             mkdir($rootDir . $lazyPath);
         }
 
-        if ($lazyTarget && !file_exists(TL_ROOT . '/' . $lazyTarget)) {
+        if ($lazyTarget && !file_exists($rootDir . '/' . $lazyTarget)) {
             $imagine = new Imagine();
             $resizer = new Resizer($rootDir . '/system/tmp');
             $image = new ContaoImageImage($image, $imagine);
@@ -49,8 +49,8 @@ class LazyloadHelper
                 ->setTargetPath($rootDir . $lazyTarget);
             $resizer->resize($image, $config, $options);
         }
-        if ($lazyTarget && file_exists(TL_ROOT . '/' . $lazyTarget)) {
-            $strFile = @file_get_contents(TL_ROOT . '/' . $lazyTarget);
+        if ($lazyTarget && file_exists($rootDir . '/' . $lazyTarget)) {
+            $strFile = @file_get_contents($rootDir . '/' . $lazyTarget);
         }
         if ($strFile) {
             $strImg = "data:image/" . str_replace(
